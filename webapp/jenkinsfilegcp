@@ -5,7 +5,7 @@ pipeline {
         PROJECT_ID = 'testproject-396606'
         CLUSTER_NAME = 'cluster-1'
         ZONE = 'us-central1-c	'
-        CREDENTIALS_ID = 'GCP-JENKINS-SA' // ID of the GCP service account credential in Jenkins
+        CREDENTIALS_ID = 'testproject' // ID of the GCP service account credential in Jenkins
     }
 
     stages {
