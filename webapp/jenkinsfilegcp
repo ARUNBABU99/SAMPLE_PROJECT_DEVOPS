@@ -5,14 +5,14 @@ pipeline {
         PROJECT_ID = 'testproject-396606'
         CLUSTER_NAME = 'cluster-1'
         ZONE = 'us-central1-c	'
-        CREDENTIALS_ID = 'testproject' // ID of the GCP service account credential in Jenkins
+        CREDENTIALS_ID = 'GCP-JENKINS-SA' // ID of the GCP service account credential in Jenkins
     }
 
     stages {
         stage('Authenticate with GCP') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: "${CREDENTIALS_ID}", variable: 'GCP_SERVICE_ACCOUNT_KEY')]) {
+                    withCredentials([file(credentialsId: "${CREDENTIALS_ID}", variable: 'GCP_SERVICE_ACCOUNT_KEY')]) {
                         sh """
                             echo "$GCP_SERVICE_ACCOUNT_KEY" > /tmp/account.json
                             gcloud auth activate-service-account --key-file=/tmp/account.json
