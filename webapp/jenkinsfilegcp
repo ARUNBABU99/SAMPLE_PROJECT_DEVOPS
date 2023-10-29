@@ -24,7 +24,7 @@ pipeline {
         }
         stage('deploying app'){
             steps{
-                sh 'helm install webapp . -n jenkins-local'
+                sh 'cd webapp && helm install webapp . -n jenkins-local'
             }
         }
     }
